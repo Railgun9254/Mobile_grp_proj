@@ -25,7 +25,7 @@ import android.provider.Settings;
 public class c4_bomb_game2 extends AppCompatActivity implements Animation.AnimationListener, View.OnClickListener {
     Animation anim_move_left, anim_shaking;
     ImageView c4_main, c4_wire, c4_cutter, c4_bomb, c4_wire_cut;
-    TextView sign_text, choice1, choice2, choice3, choice4, sign_result_text;
+    TextView sign_text, choice1, choice2, choice3, choice4, sign_result_text,textView;
     View scrolling_line, detect_line1, detect_line2, detect_line3, detect_line4;
     ImageButton exit_button, retry_button, hint_button;
     ObjectAnimator scrollingAnimator; // Store the animator reference
@@ -45,7 +45,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.c4_bomb_game1);
+        setContentView(R.layout.c4_bomb_game2);
 
         // 初始化背景音樂
         setupBackgroundMusic();
@@ -282,9 +282,9 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     private void resetGame() {
         correctAnswerCount = 0;
         animateLine(scrolling_line);
+        updateQuestion();
         loadUI();
         correctAnswerLine = (int)(Math.random() * 4) + 1;
-        updateQuestion();
     }
 
     private void updateQuestion() {
@@ -353,7 +353,10 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
         choice3 = findViewById(R.id.choice3);
         choice4 = findViewById(R.id.choice4);
         sign_result_text = findViewById(R.id.sign_result_text);
-        sign_result_text.setText("Progress: " + correctAnswerCount + "/" + REQUIRED_CORRECT_ANSWERS);
+        sign_result_text = findViewById(R.id.sign_result_text);
+        sign_result_text.setText("FEAR THE SILENCE");
+        sign_result_text.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
+        sign_result_text.setTextColor(getResources().getColor(android.R.color.white)); // Ensure
 
         exit_button = findViewById(R.id.exit_button);
         exit_button.setOnClickListener(this);
@@ -368,7 +371,14 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
         currentScore = 5000;
         speed = 100;
 
-        updateQuestion();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sign_result_text.setBackground(null);
+                sign_result_text.setTextColor(getResources().getColor(android.R.color.black)); // Ensure
+                updateQuestion();
+            }
+        }, 1000);
     }
 
     @Override

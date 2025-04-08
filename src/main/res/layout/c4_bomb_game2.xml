@@ -231,15 +231,4 @@
         android:layout_alignParentRight="true"
         app:srcCompat="@drawable/repeat_right" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/sign_result_text"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_marginBottom="10dp"
-        android:text="Fear The Silence"
-        android:textSize="20sp" />
-
 </RelativeLayout>
