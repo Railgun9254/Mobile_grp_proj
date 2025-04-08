@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/wood_sign"
+        android:layout_width="363dp"
+        android:layout_height="133dp"
+        android:layout_below="@+id/c4_main"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/wood_sign" />
+
+    <View
+        android:id="@+id/detect_line1"
+        android:layout_width="55dp"
+        android:layout_height="1dp"
+        android:layout_alignStart="@+id/c4_main"
+        android:layout_alignBottom="@+id/c4_main"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="185dp"
+        android:background="@color/design_default_color_error" />
+
+    <View
+        android:id="@+id/detect_line2"
+        android:layout_width="50dp"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/c4_main"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="185dp"
+        android:layout_toEndOf="@+id/detect_line1"
+        android:background="@color/design_default_color_error" />
+
+    <View
+        android:id="@+id/detect_line3"
+        android:layout_width="50dp"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/c4_main"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="185dp"
+        android:layout_toEndOf="@+id/detect_line2"
+        android:background="@color/design_default_color_error" />
+
+    <View
+        android:id="@+id/detect_line4"
+        android:layout_width="60dp"
+        android:layout_height="1dp"
+        android:layout_alignBottom="@+id/c4_main"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="185dp"
+        android:layout_toEndOf="@+id/detect_line3"
+        android:background="@color/design_default_color_error" />
+
+    <View
+        android:id="@+id/scrolling_line"
+        android:layout_width="3dp"
+        android:layout_height="10dp"
+        android:layout_alignTop="@+id/c4_main"
+        android:layout_alignBottom="@+id/c4_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="213dp"
+        android:layout_marginBottom="183dp"
+        android:background="@android:color/holo_blue_light" />
+
+    <ImageView
+        android:id="@+id/c4_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="107dp"
+        android:src="@drawable/c4_main" />
+
+    <ImageView
+        android:id="@+id/c4_cutter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@+id/c4_main"
+        android:layout_marginStart="-81dp"
+        android:layout_marginBottom="-10dp"
+        android:layout_toEndOf="@+id/c4_wire_cut"
+        android:src="@drawable/c4_cutter" />
+
+    <ImageView
+        android:id="@+id/c4_bomb"
+        android:layout_width="313dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/c4_main"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="0dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/c4_bomb_explosive" />
+
+    <ImageView
+        android:id="@+id/c4_wire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/c4_main"
+        android:layout_alignEnd="@+id/c4_main"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="80dp"
+        android:src="@drawable/c4_wire"
+        android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/c4_wire_cut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/c4_main"
+        android:layout_alignEnd="@+id/c4_main"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="81dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/c4_wire_cut" />
+
+    <!-- Scrolling line -->
+
+
+    <TextView
+        android:id="@+id/sign_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/wood_sign"
+        android:layout_alignTop="@+id/wood_sign"
+        android:layout_alignEnd="@+id/wood_sign"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="-2dp"
+        android:text="Question 1"
+        android:textAlignment="center"
+        android:textColor="@color/design_default_color_error"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/choice1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detect_line1"
+        android:layout_alignStart="@+id/detect_line1"
+        android:layout_alignEnd="@+id/detect_line1"
+        android:layout_marginTop="-170dp"
+        android:text="a"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/choice2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detect_line2"
+        android:layout_alignStart="@+id/detect_line2"
+        android:layout_alignEnd="@+id/detect_line2"
+        android:layout_marginTop="-170dp"
+        android:text="b"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/choice3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detect_line3"
+        android:layout_alignStart="@+id/detect_line3"
+        android:layout_alignEnd="@+id/detect_line3"
+        android:layout_marginTop="-170dp"
+        android:text="c"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/choice4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detect_line4"
+        android:layout_alignStart="@+id/detect_line4"
+        android:layout_alignEnd="@+id/detect_line4"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-170dp"
+        android:text="d"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sign_result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/c4_main"
+        android:layout_alignStart="@+id/c4_bomb"
+        android:layout_alignEnd="@+id/c4_bomb"
+        android:layout_marginBottom="-100dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/exit" />
+
+    <ImageButton
+        android:id="@+id/hint_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        app:srcCompat="@drawable/info" />
+
+    <ImageButton
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/repeat_right" />
+
+</RelativeLayout>

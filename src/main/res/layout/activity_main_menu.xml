@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Game_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu">
+
+    <ImageView
+        android:id="@+id/user_pic"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#525DA2"
+        tools:srcCompat="@drawable/star_active" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="69dp"
+        android:layout_height="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_toEndOf="@+id/user_pic"
+        android:text="user_name" />
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="Logout"
+        app:icon="@android:drawable/btn_star_big_on" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/wood_sign" />
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="false"
+        android:layout_marginTop="134dp"
+        android:text="Group-2-Game"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#591F1F"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_marginTop="-52dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/stage_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="stage"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/legend_board_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:text="legend board"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="setting"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</RelativeLayout>
