@@ -14,30 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Group_proj"
         tools:targetApi="31">
-        <activity
-            android:name=".stage_select"
-            android:exported="false" />
-        <activity
-            android:name=".c4_bomb_game2"
-            android:exported="false" />
+
         <activity
             android:name=".MainMenu"
-            android:exported="false" />
-        <activity
-            android:name=".winning_stage1"
-            android:exported="false" />
-        <activity
-            android:name=".winning_stage2"
-            android:exported="false" />
-        <activity
-            android:name=".c4_bomb_game1"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".stage_select"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".c4_bomb_game2"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".winning_stage"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".c4_bomb_game1"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

@@ -158,9 +158,9 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
                 public void run() {
                     sign_result_text.setText("You win!");
                     // 可以在这里添加胜利的动画或其他效果
-                    Intent intent = new Intent(c4_bomb_game1.this, winning_stage1.class);
+                    Intent intent = new Intent(c4_bomb_game1.this, winning_stage.class);
                     // 传递关卡和分数信息
-                    intent.putExtra("level", 11);
+                    intent.putExtra("currentLevel", 11);
                     // 计算得分 - 这里只是一个示例，您可以根据实际情况计算分数
                     intent.putExtra("score", currentScore);
 
@@ -179,19 +179,19 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
                     sign_result_text.setText("Correct! Need " + (REQUIRED_CORRECT_ANSWERS - correctAnswerCount) + " more.");
                     continueGame();
                 }
-            }, 1000);
+            }, 500);
         }
     }
 
     // 继续游戏，生成新题目
     private void continueGame() {
         animateLine(scrolling_line);
-
         // 生成新的正确答案位置
         correctAnswerLine = (int)(Math.random() * 4) + 1;
-
         // 生成新的问题
         updateQuestion();
+        c4_wire.setVisibility(View.VISIBLE);
+        c4_wire_cut.setVisibility(View.INVISIBLE);
     }
 
     // Wrong ans event
@@ -202,13 +202,6 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
 
         // anim event + lose
         cutter_cut();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                c4_wire.setVisibility(View.INVISIBLE);
-                c4_wire_cut.setVisibility(View.VISIBLE);
-            }
-        }, 200);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -227,7 +220,6 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
                 });
             }
         }, 500);
-
 
         // reset game delay
         new Handler().postDelayed(new Runnable() {

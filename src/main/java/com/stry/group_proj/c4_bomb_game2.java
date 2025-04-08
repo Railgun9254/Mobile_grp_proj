@@ -45,7 +45,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.c4_bomb_game2);
+        setContentView(R.layout.c4_bomb_game1);
 
         // 初始化背景音樂
         setupBackgroundMusic();
@@ -209,8 +209,8 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
                 @Override
                 public void run() {
                     sign_result_text.setText("You win!");
-                    Intent intent = new Intent(c4_bomb_game2.this, winning_stage2.class);
-                    intent.putExtra("level", 12); // Use "level" key as defined in winning_stage2
+                    Intent intent = new Intent(c4_bomb_game2.this, winning_stage.class);
+                    intent.putExtra("currentLevel", 12); // Use "level" key as defined in winning_stage2
                     intent.putExtra("score", currentScore);
                     startActivity(intent);
                     finish();
@@ -223,7 +223,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
                     sign_result_text.setText("Correct! Need " + (REQUIRED_CORRECT_ANSWERS - correctAnswerCount) + " more.");
                     continueGame();
                 }
-            }, 1000);
+            }, 500);
         }
     }
 
@@ -231,6 +231,8 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
         animateLine(scrolling_line);
         correctAnswerLine = (int)(Math.random() * 4) + 1;
         updateQuestion();
+        c4_wire.setVisibility(View.VISIBLE);
+        c4_wire_cut.setVisibility(View.INVISIBLE);
     }
 
     private void handleWrongAnswer() {
@@ -241,13 +243,6 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
         cutter_cut(); // Trigger cutting animation
 
         // Ensure visibility is changed in a delayed manner to allow time for animations
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                c4_wire.setVisibility(View.INVISIBLE);
-                c4_wire_cut.setVisibility(View.VISIBLE);
-            }
-        }, 200); // Delay for 200 milliseconds
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -268,15 +263,16 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
                     }
                 });
 
-                // Reset game after a short delay
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        resetGame(); // Reset game state after bomb explosion
-                    }
-                }, 2000); // Delay for 2 seconds before resetting
+
             }
         }, 500); // Delay for half a second to allow for visual effects
+        // Reset game after a short delay
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resetGame(); // Reset game state after bomb explosion
+            }
+        }, 2000); // Delay for 2 seconds before resetting
     }
 
     private void resetGame() {
