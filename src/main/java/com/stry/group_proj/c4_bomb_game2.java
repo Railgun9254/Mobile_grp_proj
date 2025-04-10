@@ -40,7 +40,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     private VolumeContentObserver volumeContentObserver;
     private MediaPlayer mediaPlayer; // 添加 MediaPlayer 用於播放 BGM
     private MediaPlayer bomb_effect;
-
+    private boolean touchEnabled = true; // 跟踪触摸是否可用
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +59,9 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
         findViewById(R.id.c4_main).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                if (!touchEnabled) return false; // 如果不可用，直接返回
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    touchEnabled = false;
                     stopScrollingLine();
                     cutter_cut();
                     return true; // 事件处理成功
@@ -198,6 +200,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     }
 
     private void handleCorrectAnswer() {
+        touchEnabled = false; // 禁用触摸
         correctAnswerCount++;
         c4_wire.setVisibility(View.VISIBLE);
         c4_wire_cut.setVisibility(View.INVISIBLE);
@@ -222,6 +225,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
                 public void run() {
                     sign_result_text.setText("Correct! Need " + (REQUIRED_CORRECT_ANSWERS - correctAnswerCount) + " more.");
                     continueGame();
+                    touchEnabled = true;
                 }
             }, 500);
         }
@@ -236,6 +240,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     }
 
     private void handleWrongAnswer() {
+        touchEnabled = false; // 禁用触摸
         correctAnswerCount = 0; // Reset correct answer count
         Toast.makeText(this, "Wrong!", Toast.LENGTH_SHORT).show();
         sign_result_text.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
@@ -271,6 +276,7 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
             @Override
             public void run() {
                 resetGame(); // Reset game state after bomb explosion
+                touchEnabled = true; // 禁用触摸
             }
         }, 2000); // Delay for 2 seconds before resetting
     }
@@ -350,8 +356,8 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
         choice4 = findViewById(R.id.choice4);
         sign_result_text = findViewById(R.id.sign_result_text);
         sign_result_text = findViewById(R.id.sign_result_text);
-        sign_result_text.setText("FEAR THE SILENCE");
-        sign_result_text.setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
+        sign_result_text.setText("Listen the voice");
+        sign_result_text.setBackgroundColor(getResources().getColor(android.R.color.holo_purple));
         sign_result_text.setTextColor(getResources().getColor(android.R.color.white)); // Ensure
 
         exit_button = findViewById(R.id.exit_button);
@@ -418,12 +424,12 @@ public class c4_bomb_game2 extends AppCompatActivity implements Animation.Animat
     }
 
     private void provideHint() {
-        if (hintUsageCount < 3) {
+        if (hintUsageCount < 4) {
             hintUsageCount++;
-            currentScore -= 2000;
+            currentScore -= 1500;
 
-            if (hintUsageCount == 3) {
-                Toast.makeText(this, "Volume is goal!", Toast.LENGTH_SHORT).show();
+            if (hintUsageCount == 1) {
+                Toast.makeText(this, "Volume change speed", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "The correct answer is: " + getCorrectAnswer(), Toast.LENGTH_SHORT).show();
             }

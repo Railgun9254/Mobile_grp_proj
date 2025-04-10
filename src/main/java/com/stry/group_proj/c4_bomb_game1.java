@@ -32,9 +32,7 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
     private int currentScore = 5000; // 假设初始分数为5000
     private MediaPlayer mediaPlayer; // 添加 MediaPlayer 用於播放 BGM
     private MediaPlayer bomb_effect;
-
-
-
+    private boolean touchEnabled = true; // 跟踪触摸是否可用
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +48,9 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
         findViewById(R.id.c4_main).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                if (!touchEnabled) return false; // 如果不可用，直接返回
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    touchEnabled = false;
                     stopScrollingLine();
                     cutter_cut();
                     return true; // 事件处理成功
@@ -145,6 +145,8 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
     }
     // correct ans event
     private void handleCorrectAnswer() {
+        touchEnabled = false; // 禁用触摸
+
         correctAnswerCount++; // 增加正确答案计数
         c4_wire.setVisibility(View.VISIBLE);
         c4_wire_cut.setVisibility(View.INVISIBLE);
@@ -178,6 +180,7 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
                 public void run() {
                     sign_result_text.setText("Correct! Need " + (REQUIRED_CORRECT_ANSWERS - correctAnswerCount) + " more.");
                     continueGame();
+                    touchEnabled = true;
                 }
             }, 500);
         }
@@ -226,6 +229,7 @@ public class c4_bomb_game1 extends AppCompatActivity implements Animation.Animat
             @Override
             public void run() {
                 resetGame();
+                touchEnabled = true;
             }
         }, 2000);
     }
