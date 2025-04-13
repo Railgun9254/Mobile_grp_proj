@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -12,9 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Group_proj"
+        android:theme="@style/Theme.FindDifference"
         tools:targetApi="31">
-
         <activity
             android:name=".MainMenu"
             android:exported="true"
@@ -24,24 +23,46 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".stage_select"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
-            android:name=".c4_bomb_game2"
+            android:name=".FindDifference2"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+        </activity>
         <activity
-            android:name=".winning_stage"
+            android:name=".FindDifference1"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".FindDifferenceWin"
+            android:exported="false"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".FindDifferenceWin1"
+            android:exported="false" />
+        <activity
+            android:name=".FindDifferenceWin2" 
+            android:exported="false" />
         <activity
             android:name=".c4_bomb_game1"
             android:exported="false"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".c4_bomb_game2"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".winning_stage1"
+            android:exported="false" />
+        <activity
+            android:name=".winning_stage2"
+            android:exported="false" />
     </application>
 
 </manifest>
